@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S FAMILY WOODWORKS - Jasa Mebel Premium Indonesia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c1810;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #8B4513;
+        }
+
+        .cta-button {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+.btn-primary {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    flex: 1;
+}
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        linear-gradient(135deg, #f8f4f0 0%, #e8d9c6 50%, #d4b896 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #2c1810;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sections */
+        .collections, .services, .process {
+            padding: 120px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services {
+            background: #f8f4f0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #2c1810;
+            margin-bottom: 1rem;
+        }
+
+        /* Collections */
+   .collection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+/* CARD */
+.collection-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+    cursor: pointer;
+}
+
+/* HOVER CARD */
+.collection-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* IMAGE */
+.product-image {
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+/* ZOOM IMAGE */
+.collection-item:hover .product-image img {
+    transform: scale(1.08);
+}
+
+/* OVERLAY (AWALNYA HIDDEN) */
+.collection-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.4),
+        transparent
+    );
+
+    color: white;
+    padding: 20px;
+
+    opacity: 0; /* 🔥 penting */
+    transition: all 0.4s ease;
+}
+
+/* MUNCUL SAAT HOVER */
+.collection-item:hover .collection-overlay {
+    opacity: 1;
+}
+
+/* TEXT */
+.collection-overlay h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    transform: translateY(15px);
+    transition: 0.3s;
+}
+
+.collection-overlay .price {
+    font-weight: 700;
+    color: #FFD700;
+    transform: translateY(15px);
+    transition: 0.3s;
+}
+
+/* ANIMASI MASUK */
+.collection-item:hover .collection-overlay h3,
+.collection-item:hover .collection-overlay .price {
+    transform: translateY(0);
+}
+
+/* BORDER PREMIUM */
+.collection-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    pointer-events: none;
+}
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin: 0 auto 2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 5%;
+            background: linear-gradient(135deg, #2c1810 0%, #8B4513 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* MODAL DETAIL PRODUK */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+             overflow-y: auto;
+        }
+
+       .modal-content{
+        border-radius:24px;
+        padding:30px;
+        box-shadow:0 30px 80px rgba(0,0,0,.3);
+        max-height: 90vh;
+        overflow-y: auto;
+       }
+
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: #666;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover { color: #8B4513; }
+
+        .product-detail {
+         display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 0;
+      align-items: start;
+
+   
+        }
+            .product-images{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap:14px;
+            }
+
+        .main-image{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  height:420px;
+  cursor:grab;
+  background:#f5f5f5;
+  margin-bottom: 0px;
+  line-height: 0;
+}
+
+        .thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ini kunci utama */
+             cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+        }
+        .thumbnail-grid {
+            display: flex;
+            gap: 4px;
+            margin-top: 5px;
+            
+        }
+
+        .main-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+ transition: transform 0.1s ease;
+     will-change: transform;
+  
+}
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            
+            
+}
+    /* ZOOM */
+    .zoom-img{
+  position:absolute;
+  top:0;
+  left:0;
+  width:200%;
+  height:200%;
+  object-fit:cover;
+  pointer-events:none;
+  opacity:0;
+}
+        .main-image.zoom img{
+        transform:scale(1.1);
+        cursor:zoom-in;
+}
+        .thumbnail.active {
+              opacity: 1;
+            border: 3px solid #8B4513;
+            transform: scale(1.1);
+        }
+/* NAV */
+            .nav{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            background:rgba(0,0,0,.4);
+            color:#fff;
+            border:none;
+            padding:12px 16px;
+            border-radius:50%;
+            cursor:pointer;
+            backdrop-filter:blur(5px);
+            z-index: 10;
+    transition: 0.3s;
+            
+}
+        .nav:hover{
+        background:#000;
+        }
+        .prev{left:10px}
+        .next{right:10px}
+
+        /* THUMBNAIL */
+        .thumbnail-grid{
+        display:flex;   
+        gap:6px;
+        margin-top: 15px;
+        overflow-x:auto;
+        scrollbar-width: none;
+        
+    
+        }
+        .thumbnail-grid::-webkit-scrollbar {
+    display: none; /* Chrome */
+        }
+        .thumbnail{
+        min-width:70px;
+        height:70px;
+        border-radius:10px;
+        overflow:hidden;
+        border:2px solid transparent;
+        cursor:pointer;
+         opacity: 0.6;
+        transition:.2s;
+        
+        
+        }
+        .thumbnail img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+         object-fit: cover;
+         border-radius: 8px;
+         
+        }
+        
+        .thumbnail.active{
+        border-color:var(--primary);
+        transform:scale(1.05);
+        }
+        .thumbnail-grid::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(to left, #2c1810, transparent);
+            pointer-events: none;
+        }
+        .product-info h1 {
+             font-size:28px;
+         font-weight:700;
+            color: #c9400a;
+            margin-bottom: 1rem;
+            
+            
+        }
+
+        .product-price {
+           font-size:24px;
+            color: #ffffff; /* gold biar premium */
+            font-weight:700;
+            margin:10px 0 20px;
+        }
+        .product-info p {
+            color: #ccc; /* abu terang */
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .material-specs {
+            background: #f8f4f0;
+            color: #2c1810;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+             margin-top: 20px;
+        }
+
+        .material-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0d4c0;
+            border-bottom: 1px solid #eee;
+    padding: 8px 0;
+        }
+        .material-item span:first-child {
+    color: #777;
+}
+
+.material-item span:last-child {
+    font-weight: 600;
+    color: #2c1810;
+}
+        .material-label { font-weight: 500; color: #f7f2f2; }
+        .material-value { font-weight: 600; color: #2c1810; }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+             margin-top: 15px;
+        }
+
+        .features-list li {
+            color: #ddd;
+            padding: 6px 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #8B4513;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-primary{
+  background:linear-gradient(135deg,transparent);
+  color:#fff;
+  border:2px solid #8B4513;
+  padding:14px 20px;
+  border-radius:50px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(139,69,19,.4);
+}
+
+        .btn-secondary {
+            background: transparent;
+            color: #f5f4f3;
+            border: 2px solid #8B4513;
+        }
+
+        .btn-secondary:hover {
+            background: #8B4513;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .product-detail { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+            .cta-buttons { flex-direction: column; }
+            .collection-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">S FAMILY WOODWORKS</a>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#collections">Koleksi</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#process">Proses</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Pesan Sekarang</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>S FAMILY<br>WOODWORKS</h1>
+            <p>Mebel Premium Buatan Tangan<br>Desain Elegan untuk Rumah Impian Anda</p>
+            <a href="#collections" class="cta-button">Lihat Koleksi</a>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section id="collections" class="collections">
+        <div class="section-title">
+            <h2>Koleksi Unggulan</h2>
+            <p>Klik produk untuk melihat detail bahan dan spesifikasi lengkap</p>
+        </div>
+        <div class="collection-grid">
+
+            <!-- 12 Produk Koleksi -->
+            <div class="collection-item" data-product="modena">
+                <div class="product-image" style="background: linear-gradient(135deg, #d4b896 0%, #c19a6b 100%);">
+                    <img src="image/Sofa L-Shape Modena1.jpg" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Sofa L-Shape Modena</h3>
+                    <p class="price">Rp 28.500.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="chesterfield">
+                <div class="product-image" style="background: linear-gradient(135deg, #e8d9c6 0%, #d4b896 100%);">
+                    <img src="image/Sofa Chesterfield.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Sofa Chesterfield</h3>
+                    <p class="price">Rp 35.000.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="verona">
+                <div class="product-image" style="background: linear-gradient(135deg, #f0e6d2 0%, #e8d9c6 100%);">
+                    <img src="image/Meja Makan Verona.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Meja Makan Verona</h3>
+                    <p class="price">Rp 42.000.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="oslo">
+                <div class="product-image" style="background: linear-gradient(135deg, #c19a6b 0%, #a67c52 100%);">
+                    <img src="image/Kursi Executive Oslo3.jpg" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Kursi Executive Oslo</h3>
+                    <p class="price">Rp 12.800.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="milano">
+                <div class="product-image" style="background: linear-gradient(135deg, #d4b896 0%, #f0e6d2 100%);">
+                    <img src="image/Kabinet TV Milano.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Kabinet TV Milano</h3>
+                    <p class="price">Rp 18.500.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="havana">
+                <div class="product-image" style="background: linear-gradient(135deg,  #d4b896 0%, #f0e6d2 100%);">
+                    <img src="image/Kursi Bar Havana.jpg" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Kursi Bar Havana</h3>
+                    <p class="price">Rp 16.000.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="roma">
+                <div class="product-image" style="background: linear-gradient(135deg, #e8d9c6 0%, #d4b896 100%);">
+                    <img src="image/Lemari Walk-in Roma.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Lemari Walk-in Roma</h3>
+                    <p class="price">Rp 65.000.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="berlin">
+                <div class="product-image" style="background: linear-gradient(135deg, #f8f4f0 0%, #e8d9c6 100%);">
+                    <img src="image/Meja Kerja Berlin.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Meja Kerja Berlin</h3>
+                    <p class="price">Rp 22.500.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="florence">
+                <div class="product-image" style="background: linear-gradient(135deg, #c19a6b 0%, #d4b896 100%);">
+                    <img src="image/Rak Buku Florence1.jpg" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Rak Buku Florence</h3>
+                    <p class="price">Rp 19.800.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="napoli">
+                <div class="product-image" style="background: linear-gradient(135deg, #a67c52 0%, #8B4513 100%);">
+                    <img src="image/Kursi Makan Napoli.jpg" style="font-size: 4rem; color: white;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Kursi Makan Napoli</h3>
+                    <p class="price">Rp 15.600.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="paris">
+                <div class="product-image" style="background: linear-gradient(135deg, #f0e6d2 0%, #d4b896 100%);">
+                    <img src="image/Konsole Marble Paris.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Konsole Marble Paris</h3>
+                    <p class="price">Rp 14.200.000</p>
+                </div>
+            </div>
+            <div class="collection-item" data-product="venezia">
+                <div class="product-image" style="background: linear-gradient(135deg, #e8d9c6 0%, #f8f4f0 100%);">
+                    <img src="image/Bedroom Set Venezia.jpg" style="font-size: 4rem; color: #8B4513;"></i>
+                </div>
+                <div class="collection-overlay">
+                    <h3>Bedroom Set Venezia</h3>
+                    <p class="price">Rp 98.000.000</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Komitmen penuh untuk menciptakan mebel impian Anda</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+                <h3>Desain Custom</h3>
+                <p>Desain sesuai selera dan kebutuhan ruang Anda dengan sentuhan personal</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hammer"></i></div>
+                <h3>Produksi Premium</h3>
+                <p>Pengerjaan tangan oleh pengrajin berpengalaman dengan material terbaik</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-truck"></i></div>
+                <h3>Pengiriman & Pemasangan</h3>
+                <p>Pengiriman aman ke seluruh Indonesia dengan tim pemasangan profesional</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="process">
+        <div class="section-title">
+            <h2>Proses Pengerjaan</h2>
+            <p>Dari ide hingga mebel jadi di tangan Anda</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3>Konsultasi</h3>
+                <p>Diskusi mendalam tentang kebutuhan dan preferensi desain</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3>Desain</h3>
+                <p>Pembuatan sketsa 3D dan revisi hingga Anda puas</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3>Produksi</h3>
+                <p>Pengerjaan teliti oleh pengrajin ahli</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3>Pengiriman</h3>
+                <p>Pengiriman aman dan pemasangan di lokasi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>Siap Memulai Proyek Mebel Anda?</h2>
+            <p>Konsultasi gratis untuk mewujudkan impian interior Anda</p>
+            <a href="https://wa.me/6281234567890?text=Halo%20LuxForm" class="cta-button" style="background: white; color: #2c1810; font-size: 1.2rem; padding: 20px 40px;">Hubungi WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>S FAMILY WOODWORKS</h3>
+                <p>Mebel premium buatan tangan dengan desain elegan untuk gaya hidup modern Anda.</p>
+            </div>
+            <div>
+                <h4>Kontak</h4>
+                <p><i class="fas fa-phone"></i> +62 812-3456-7890</p>
+                <p><i class="fas fa-envelope"></i> info@luxform.co.id</p>
+            </div>
+        </div>
+        <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #333; color: #999;">
+            <p>&copy; 2024 S FAMILY WOODWORKS. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DETAIL PRODUK -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-detail" id="productDetail">
+                <!-- Konten diisi JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data lengkap 12 produk dengan spesifikasi bahan
+        const products = {
+            modena: {
+                name: "Sofa L-Shape Modena",
+                price: "Rp 28.500.000",
+                images :["image/Sofa L-Shape Modena1.jpg",
+                        "image/Sofa L-Shape Modena2.jpg",
+                      "image/Sofa L-Shape Modena3.jpg",
+                     "image/Sofa L-Shape Modena4.jpg"],
+                
+                materials: {
+                    "Frame Utama": "Kayu Jati Solid OVH",
+                    "Busa": "High Density 60kg/m³ (D40cm)",
+                    "Kain": "Katun Premium Anti Stain (Turki)",
+                    "Paku": "Stainless Steel Anti Karat",
+                    "Kaki": "Kayu Jati + Brass Finish"
+                },
+                features: ["Kapasitas 6-8 orang", "Modular design", "Garansi 5 tahun", "Anti noda", "Custom warna"],
+                description:"Sofa L-Shape premium dengan desain modern minimalis."
+            },
+            chesterfield: {
+                name: "Sofa Chesterfield Classic",
+                price: "Rp 35.000.000",
+                images :["image/Sofa Chesterfield.jpg",
+                        "image/Sofa Chesterfield1.jpg",
+                      "image/Sofa Chesterfield2.jpg",
+                     "image/Sofa Chesterfield3.jpg"],
+                materials: {
+                    "Frame": "Kayu Mahoni Premium Grade A",
+                    "Kulit": "Full Grain Leather Italia (1.2-1.4mm)",
+                    "Busa": "HR Foam 50kg/m³ + Memory Foam",
+                    "Pegas": "Nozag Spring System",
+                    "Kaki": "Brass Polished"
+                },
+                features: ["Desain klasik Inggris", "3 dudukan", "Lifetime warranty", "Kulit breathable", "Hand-tufted"],
+                description: "Tufted sofa klasik dengan kulit asli Italia."
+            },
+            verona: {
+                name: "Meja Makan Verona 8 Kursi",
+                price: "Rp 42.000.000",
+                images :["image/Meja Makan Verona.jpg",
+                        "image/Meja Makan Verona1.jpg",
+                      "image/Meja Makan Verona2.jpg",
+                     "image/Meja Makan Verona3.jpg"],
+                materials: {
+                    "Top Table": "Kayu Jati Solid 4cm Thick",
+                    "Legs": "Jati Solid + Brass Accent",
+                    "Finish": "Natural Oil Matte (Food Safe)",
+                    "Extension": "Metal Track System",
+                    "Hardware": "Brass Premium"
+                },
+                features: ["Extensible 2m→3m", "Kapasitas 8-10 orang", "Garansi 10 tahun", "Anti gores", "Custom size"],
+                description: "Meja makan elegan dengan extension smooth."
+            },
+            oslo: {
+                name: "Kursi Executive Oslo",
+                price: "Rp 12.800.000",
+                images :["image/Kursi Executive Oslo.jpg",
+                        "image/Kursi Executive Oslo1.jpg",
+                      "image/Kursi Executive Oslo2.jpg",
+                     "image/Kursi Executive Oslo3.jpg"],
+                materials: {
+                    "Frame": "Aluminium Alloy + Kayu",
+                    "Mesh": "Breathable 3D Mesh (Impor)",
+                    "Busa": "Memory Foam Headrest",
+                    "Roda": "PU Silent Wheels (5pcs)",
+                    "Armrest": "Adjustable 4D"
+                },
+                features: ["Ergonomis 100%", "Lumbar support", "Tilt 135°", "Height adjustable", "5 tahun warranty"],
+                description: "Kursi kerja premium untuk produktivitas maksimal."
+            },
+            milano: {
+                name: "Kabinet TV Milano",
+                price: "Rp 18.500.000",
+                images :["image/Kabinet TV Milano.jpg",
+                        "image/Kabinet TV Milano1.jpg",
+                      "image/Kabinet TV Milano2.jpg",
+                     "image/Kabinet TV Milano3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+            havana: {
+                name: "Kabinet TV Milano",
+                price: "Rp 18.500.000",
+                images :["image/Kursi Bar Havana.jpg",
+                        "image/Kursi Bar Havana1.jpg",
+                      "image/Kursi Bar Havana2.jpg",
+                     "image/Kursi Bar Havana3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+           roma: {
+                name: "Lemari Walk-in Roma",
+                price: "Rp 18.500.000",
+                images :["image/Lemari Walk-in Roma.jpg",
+                        "image/Lemari Walk-in Roma1.jpg",
+                      "image/Lemari Walk-in Roma2.jpg",
+                     "image/Lemari Walk-in Roma3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+            berlin: {
+                name: "Meja Kerja Berlin",
+                price: "Rp 18.500.000",
+                images :["image/Meja Kerja Berlin.jpg",
+                        "image/Meja Kerja Berlin1.jpg",
+                      "image/Meja Kerja Berlin2.jpg",
+                     "image/Meja Kerja Berlin3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+            florence: {
+                name: "Rak Buku Florence",
+                price: "Rp 18.500.000",
+                images :["image/Rak Buku Florence1.jpg",
+                        "image/Rak Buku Florence2.jpg",
+                      "image/Rak Buku Florence3.jpg",
+                     "image/Rak Buku Florence.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+            napoli: {
+                name: "Kursi Makan Napoli",
+                price: "Rp 18.500.000",
+                images :["image/Kursi Makan Napoli.jpg",
+                        "image/Kursi Makan Napoli1.jpg",
+                      "image/Kursi Makan Napoli2.jpg",
+                     "image/Kursi Makan Napoli3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+             paris: {
+                name: "Konsole Marble Paris",
+                price: "Rp 18.500.000",
+                images :["image/Konsole Marble Paris.jpg",
+                        "image/Konsole Marble Paris1.jpg",
+                      "image/Konsole Marble Paris2.jpg",
+                     "image/Konsole Marble Paris3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+            venezia: {
+                name: "Bedroom Set Venezia",
+                price: "Rp 18.500.000",
+                images :["image/Bedroom Set Venezia.jpg",
+                        "image/Bedroom Set Venezia1.jpg",
+                      "image/Bedroom Set Venezia2.jpg",
+                     "image/Konsole Marble Paris3.jpg"],
+                materials: {
+                    "Body": "Kayu Mahoni Solid",
+                    "Finish": "Lacquer High Gloss",
+                    "Hardware": "Soft Close Hinges",
+                    "LED": "Dimmable Warm White",
+                    "Legs": "Metal Adjustable"
+                },
+                features: ["6 laci storage", "TV 65\"", "Anti gores", "Cable management", "Custom size"],
+                description: "Kabinet TV modern dengan pencahayaan LED elegan."
+            },
+        };
+let currentImages = [];
+let currentIndex = 0;
+        // Modal controls
+const modal = document.getElementById('productModal');
+const modalContent = document.getElementById('productDetail');
+const closeBtn = document.querySelector('.close-modal');
+
+// ===== OPEN MODAL =====
+document.querySelectorAll('.collection-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const productId = item.dataset.product;
+        const product = products[productId];
+
+        if (product) {
+            showProductDetail(product);
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// ===== CLOSE MODAL =====
+closeBtn.onclick = closeModal;
+
+window.onclick = (e) => {
+    if (e.target === modal) closeModal();
+};
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+});
+
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// ===== SHOW DETAIL =====
+
+function showProductDetail(product){
+    currentImages = product.images;
+  currentIndex = 0;
+   let images = product.images || [];
+
+  modalContent.innerHTML = `
+  
+    <div class="product-images">
+
+     <div class="main-image" id="mainBox">
+  <button class="nav prev">❮</button>
+
+  <img id="mainImage" src="${images[0]}">
+
+  <!-- 🔥 TAMBAHKAN INI -->
+  <img id="zoomImage" class="zoom-img">
+
+  <button class="nav next">❯</button>
+</div>
+
+      <div class="thumbnail-grid">
+        ${product.images.map((img,i)=>`
+          <div class="thumbnail ${i==0?'active':''}" data-i="${i}">
+            <img src="${img}">
+          </div>
+        `).join('')}
+      </div>
+
+    </div>
+
+    <div class="product-info">
+      <h1>${product.name || '-'}</h1>
+      <div class="product-price">${product.price || '-'}</div>
+
+      ${
+        product.materials ? `
+        <div class="material-specs">
+          <h3>Spesifikasi Bahan</h3>
+          ${Object.entries(product.materials).map(([k,v])=>`
+            <div class="material-item">
+              <span>${k}</span>
+              <span>${v}</span>
+            </div>
+          `).join('')}
+        </div>
+        ` : ''
+        
+      }
+
+      ${
+        product.features ? `
+        <ul class="features-list">
+          ${product.features.map(f=>`<li>${f}</li>`).join('')}
+        </ul>
+        ` : ''
+        
+      }
+
+      <p>${product.description || ''}</p>
+       <div class="cta-buttons">
+                <button class="btn-primary" onclick="orderNow('${product.name}')">
+                    WhatsApp
+                </button>
+                <button class="btn-secondary" onclick="scrollToContact()">
+                    Konsultasi
+                </button>
+  </div>
+    </div>
+    
+  `;
+    initGallery(images);
+  initZoom();
+}
+function initGallery(images){
+    console.log("Gallery jalan", images);
+
+    const main = document.getElementById("mainImage");
+    const thumbs = document.querySelectorAll(".thumbnail");
+
+    thumbs.forEach((t,i)=>{
+        t.onclick = () => {
+            main.src = images[i];
+            thumbs.forEach(x=>x.classList.remove("active"));
+            t.classList.add("active");
+        };
+    });
+}
+function initZoom(){
+
+  const box = document.getElementById("mainBox");
+  const main = document.getElementById("mainImage");
+  const zoom = document.getElementById("zoomImage");
+
+  if(!box || !main || !zoom){
+    console.error("Zoom element tidak ditemukan");
+    return;
+  }
+
+  // set gambar zoom
+  zoom.src = main.src;
+
+  main.onload = ()=>{
+    zoom.src = main.src;
+  };
+
+  box.onmousemove = (e)=>{
+    const rect = box.getBoundingClientRect();
+
+    let x = (e.clientX - rect.left) / rect.width;
+    let y = (e.clientY - rect.top) / rect.height;
+
+    zoom.style.opacity = 1;
+
+    zoom.style.left = -(x * 100) + "%";
+    zoom.style.top  = -(y * 100) + "%";
+  };
+
+  box.onmouseleave = ()=>{
+    zoom.style.opacity = 0;
+  };
+
+}
+
+function updateImage(){
+  document.getElementById('mainImage').src = currentImages[currentIndex];
+
+  document.querySelectorAll('.thumbnail')
+    .forEach(t=>t.classList.remove('active'));
+
+  document.querySelector(`[data-i="${currentIndex}"]`)
+    ?.classList.add('active');
+}
+         // ===== EVENT THUMBNAIL (SETELAH RENDER) =====
+    modalContent.addEventListener('click', e => {
+
+  const thumb = e.target.closest('.thumbnail');
+  if(thumb){
+    currentIndex = thumb.dataset.i;
+    updateImage();
+  }
+
+  if(e.target.classList.contains('next')){
+    currentIndex = (currentIndex+1)%currentImages.length;
+    updateImage();
+  }
+
+  if(e.target.classList.contains('prev')){
+    currentIndex = (currentIndex-1+currentImages.length)%currentImages.length;
+    updateImage();
+  }
+
+  if(e.target.id === 'mainImage'){
+    document.getElementById('mainBox').classList.toggle('zoom');
+  }
+   if (product.images360 && product.images360.length) {
+        init360Viewer(product.images360);
+    }
+
+});
+function initZoom() {
+
+    const container = document.querySelector(".main-image");
+    const img = document.getElementById("mainImage");
+
+    let zoom = 2; // level zoom
+
+    container.addEventListener("mousemove", function(e) {
+
+        const rect = container.getBoundingClientRect();
+
+        let x = (e.clientX - rect.left) / rect.width;
+        let y = (e.clientY - rect.top) / rect.height;
+
+        img.style.transform = `scale(${zoom}) translate(-${x*50}%, -${y*50}%)`;
+        img.style.transformOrigin = `${x*100}% ${y*100}%`;
+    });
+
+    container.addEventListener("mouseleave", function() {
+        img.style.transform = "scale(1)";
+    });
+}
+    
+        function orderNow(productName) {
+            const message = `Halo S FAMILY WOODWORKS, saya ingin pesan *${productName}*. Bisa kirim detailnya?`;
+            window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        function initSlider(images) {
+
+    let current = 0;
+
+    const main = document.getElementById("mainImage");
+    const next = document.querySelector(".next");
+    const prev = document.querySelector(".prev");
+    const thumbnails = document.querySelectorAll(".thumbnail");
+
+    function update() {
+        main.src = images[current];
+
+        thumbnails.forEach(t => t.classList.remove("active"));
+        thumbnails[current].classList.add("active");
+    }
+
+    // NEXT
+    next.onclick = () => {
+        current = (current + 1) % images.length;
+        update();
+    };
+
+    // PREV
+    prev.onclick = () => {
+        current = (current - 1 + images.length) % images.length;
+        update();
+    };
+
+    // THUMBNAIL
+    thumbnails.forEach((thumb, i) => {
+        thumb.onclick = () => {
+            current = i;
+            update();
+        };
+        
+    });
+
+    // ======================
+    // 🔥 SWIPE HP + DRAG
+    // ======================
+    let startX = 0;
+
+    main.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    main.addEventListener("touchend", e => {
+        let endX = e.changedTouches[0].clientX;
+        handleSwipe(startX, endX);
+    });
+
+    main.addEventListener("mousedown", e => {
+        startX = e.clientX;
+    });
+
+    main.addEventListener("mouseup", e => {
+        let endX = e.clientX;
+        handleSwipe(startX, endX);
+    });
+
+    function handleSwipe(start, end) {
+        let diff = start - end;
+
+        if (diff > 50) {
+            current = (current + 1) % images.length;
+        } else if (diff < -50) {
+            current = (current - 1 + images.length) % images.length;
+        }
+
+        update();
+    }
+function init360Viewer(images) {
+
+    let frame = 0;
+    const main = document.getElementById("mainImage");
+
+    let startX = 0;
+
+    main.addEventListener("mousedown", e => {
+        startX = e.clientX;
+    });
+
+    main.addEventListener("mousemove", e => {
+        if (e.buttons !== 1) return;
+
+        let move = e.clientX - startX;
+
+        if (Math.abs(move) > 10) {
+            frame = (frame + (move > 0 ? -1 : 1) + images.length) % images.length;
+            main.src = images[frame];
+            startX = e.clientX;
+        }
+    });
+}
+    // ======================
+    // 🔥 ZOOM IMAGE
+    // ======================
+    const container = document.querySelector(".main-image");
+
+    container.addEventListener("mousemove", (e) => {
+        const rect = container.getBoundingClientRect();
+
+        let x = ((e.clientX - rect.left) / rect.width) * 100;
+        let y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        main.style.transformOrigin = `${x}% ${y}%`;
+        main.style.transform = "scale(1.8)";
+    });
+
+    container.addEventListener("mouseleave", () => {
+        main.style.transform = "scale(1)";
+    });
+
+}
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Thumbnail demo
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('thumbnail')) {
+                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
